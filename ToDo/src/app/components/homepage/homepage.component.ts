@@ -11,20 +11,22 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+  displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
+  dataSource: any;
   constructor(private http: HttpClient, private todoService: TodoService) { }
  // trooper$: Observable<any[]>;
   todos: ToDo[];
   todos$ : Observable<ToDo[]>
   ngOnInit() {
-    this.getItems();
+    this.getTodos();
   }
-  getItems(){
+  getTodos(){
    
 
   this.todoService.getToDos().subscribe( data => {
   
     this.todos  = data;
+    this.dataSource = this.todos;
     
   });
     
