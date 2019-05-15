@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class TodoServiceService {
+export class TodoService {
 
-  itemUrl = "http://dummy.restapiexample.com/api/v1/employees";
+  itemUrl = "https://jsonplaceholder.typicode.com/todos";
   private httpClient: HttpClient;
   constructor(http: HttpClient) {
     this.httpClient = http;
   }
-  getItems(): Observable<any[]> {
+  getToDos(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.itemUrl);
  }
 }

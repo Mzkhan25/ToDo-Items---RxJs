@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
-
+import { TodoService } from 'src/app/services/todo.service';
+import { ToDo } from 'src/app/models/to-do';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -11,20 +12,22 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private http: HttpClient, private todoService: TodoServiceService) { }
+  constructor(private http: HttpClient, private todoService: TodoService) { }
  // trooper$: Observable<any[]>;
-  trooper: any[];
+  todos: ToDo[];
+  todos$ : Observable<ToDo[]>
   ngOnInit() {
     this.getItems();
   }
   getItems(){
    
 
-  this.todoService.getItems().subscribe( data => {
-  //  console.log(data);
-    this.trooper  = data;
-   // console.log(this.tro);
+  this.todoService.getToDos().subscribe( data => {
+  
+    this.todos  = data;
+    
   });
     
   }
+  
 }
