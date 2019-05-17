@@ -9,9 +9,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class TodoService {
 
   itemUrl = "https://jsonplaceholder.typicode.com/todos";
-  private httpClient: HttpClient;
-  constructor(http: HttpClient) {
-    this.httpClient = http;
+  
+  constructor(private httpClient: HttpClient) {
   }
   getToDos(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.itemUrl);

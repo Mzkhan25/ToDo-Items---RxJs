@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { TodoService } from 'src/app/services/todo.service';
 import { ToDo } from 'src/app/models/to-do';
@@ -13,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class HomepageComponent implements OnInit {
   displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
   dataSource: any;
-  constructor(private http: HttpClient, private todoService: TodoService) { }
+  constructor( private todoService: TodoService) { }
  // trooper$: Observable<any[]>;
   todos: ToDo[];
   todos$ : Observable<ToDo[]>
